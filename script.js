@@ -48,5 +48,21 @@ volverArriba.addEventListener("click", function () {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-// 4. Poner el año actual en el pie de página
+// 4. Formulario de contacto: abrir WhatsApp con el mensaje escrito
+const formularioContacto = document.getElementById("formularioContacto");
+const numeroWhatsapp = "51957790119";
+
+formularioContacto.addEventListener("submit", function (evento) {
+  evento.preventDefault();   // evita que la página se recargue
+
+  const nombre = document.getElementById("nombre").value;
+  const mensaje = document.getElementById("mensaje").value;
+  const texto = "Hola Andrea, soy " + nombre + ". " + mensaje;
+
+  // Abre WhatsApp en una pestaña nueva con el mensaje listo para enviar
+  const enlace = "https://wa.me/" + numeroWhatsapp + "?text=" + encodeURIComponent(texto);
+  window.open(enlace, "_blank");
+});
+
+// 5. Poner el año actual en el pie de página
 document.getElementById("anio").textContent = new Date().getFullYear();
